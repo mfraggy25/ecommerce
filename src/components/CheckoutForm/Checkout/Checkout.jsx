@@ -29,12 +29,14 @@ useEffect(() => {
     }
   }, [cart]);
 
-    const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
-    const next = (data) => {
-        setShippingData(data);
-    }
+  const test = (data) => {
+    setShippingData(data);
+
+    nextStep();
+  };
 
     const Confirmation = () => {
         <div>
@@ -43,8 +45,8 @@ useEffect(() => {
     }
 
     const Form = () => activeStep === 0
-        ? <AddressForm checkoutToken={checkoutToken} next={next} />
-        : <PaymentForm />
+        ? <AddressForm checkoutToken={checkoutToken} test={test} />
+        : <PaymentForm checkoutToken={checkoutToken} />
 
 
     return (
